@@ -25,19 +25,19 @@ public class SmileConstant {
      * merchantID.
      * From merchant platform
      */
-    public static final String MERCHANT_ID = "10022";
+    public static final String MERCHANT_ID = "10001";
 
     /**
      * MerchantSecret.
      * From merchant platform
      */
-    public static final String MERCHANT_SECRET = "920d4e23f371d263b38819cacf8302975ec0012061e75fa8fabf2155b2a01a8e";
+    public static final String MERCHANT_SECRET = "f4d768ef584ad56b5851ff071b5020f7a7e601ff912f7757cc3ef97e5808e44a";
 
     /**
      * SANDBOX URL.
      * From docs API
      */
-    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway.smilepay.id";
+    public static final String BASE_SANDBOX_URL = "https://sandbox-gateway-test.smilepay.id";
 
     /**
      * PRODUCTION URL. From docs API. <br>

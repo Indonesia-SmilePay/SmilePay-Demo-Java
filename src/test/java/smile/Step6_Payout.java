@@ -28,7 +28,7 @@ import java.util.Collections;
 public class Step6_Payout extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDgyNDA1MzIsImV4cCI6MTcwODI0MTQzMiwiaWF0IjoxNzA4MjQwNTMyLCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.8XmdngwZoun06L2bfjZeoG6jNCm_zuvLUNq1U9HtZKw";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MTQzODAyNTgsImV4cCI6MTcxNDM4MTE1OCwiaWF0IjoxNzE0MzgwMjU4LCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDEifQ.8D4SiPTe9gk4JwsLDCS0UA19acYxhI2Vog1p2Bj9DNg";
 
     @Test
     public void step6_payout() throws Exception {

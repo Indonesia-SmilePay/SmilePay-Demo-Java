@@ -29,7 +29,7 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDg0MTE4MDgsImV4cCI6MTcwODQxMjcwOCwiaWF0IjoxNzA4NDExODA4LCJNRVJDSEFOVF9JRCI6IjEwMDIyIn0.q6q7aIPSb6m-julV496uEdwypZGNBj8sbOj3uCD5HjI";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MTQ0NjcxMDUsImV4cCI6MTcxNDQ2ODAwNSwiaWF0IjoxNzE0NDY3MTA1LCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.QaB1MLlsgGplQNxtziqbFG_5ZDpJRFN4lIo8qp2_0b0";
 
 
     @Test
@@ -47,12 +47,12 @@ public class Step3_Payin extends BaseTest {
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
         String purpose = "Purpose For Transaction from Java SDK";
-        String paymentMethod = "QRIS";
+        String paymentMethod = "W_DANA";
 
         //moneyReq
         MoneyReq moneyReq = new MoneyReq();
         moneyReq.setCurrency(SmileConstant.CURRENCY);
-        moneyReq.setAmount(new BigDecimal("20000"));
+        moneyReq.setAmount(new BigDecimal("10000"));
 
         //merchantReq
         MerchantReq merchantReq = new MerchantReq();
@@ -136,6 +136,7 @@ public class Step3_Payin extends BaseTest {
 
         //build
         String stringToSign = "POST" + ":" + endPointUlr + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
+        System.out.println("stringToSign = " + stringToSign);
 
         //signature
         String signature = SignatureUtil.hmacSHA512(stringToSign, SmileConstant.MERCHANT_SECRET);
