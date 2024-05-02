@@ -29,12 +29,15 @@ import java.util.Collections;
 public class Step3_Payin extends BaseTest {
 
     //accessToken.  from step2
-    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MTQ0NjcxMDUsImV4cCI6MTcxNDQ2ODAwNSwiaWF0IjoxNzE0NDY3MTA1LCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.QaB1MLlsgGplQNxtziqbFG_5ZDpJRFN4lIo8qp2_0b0";
+    private String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MTQ0Njk5NDksImV4cCI6MTcxNDQ3MDg0OSwiaWF0IjoxNzE0NDY5OTQ5LCJNRVJDSEFOVF9JRCI6IjEwMDAxIn0.zZgQP9Uzeej4ubNOrEzoLZIMhqFGrbnf8YY0QJVAEyw";
 
 
     @Test
     public void payin() throws Exception {
         System.out.println("=====> step3 : Payin transaction");
+
+        Step2_AccessToken accessTokenApi = new Step2_AccessToken();
+        String accessToken = accessTokenApi.generateAccessToken();
 
         //url
         String endPointUlr = SmileConstant.PAY_IN_API;
@@ -135,7 +138,7 @@ public class Step3_Payin extends BaseTest {
         String lowerCase = byte2Hex.toLowerCase();
 
         //build
-        String stringToSign = "POST" + ":" + endPointUlr + ":" + ACCESS_TOKEN + ":" + lowerCase + ":" + timestamp;
+        String stringToSign = "POST" + ":" + endPointUlr + ":" + accessToken + ":" + lowerCase + ":" + timestamp;
         System.out.println("stringToSign = " + stringToSign);
 
         //signature
@@ -146,7 +149,7 @@ public class Step3_Payin extends BaseTest {
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader("Content-Type", "application/json");
-        httpPost.addHeader("Authorization", "Bearer " + ACCESS_TOKEN);
+        httpPost.addHeader("Authorization", "Bearer " + accessToken);
         httpPost.addHeader("X-TIMESTAMP", timestamp);
         httpPost.addHeader("X-SIGNATURE", signature);
 

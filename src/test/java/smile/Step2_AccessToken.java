@@ -55,4 +55,39 @@ public class Step2_AccessToken extends BaseTest {
 
     //response = {"responseCode":"2007300","responseMessage":"Successful","accessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDA1NTA1NzAsImV4cCI6MTcwMDU1MTQ3MCwiaWF0IjoxNzAwNTUwNTcwLCJNRVJDSEFOVF9JRCI6InNhbmRib3gtMTAwMDQifQ.LKP5DH0n0Zy2lcUICnhGgAnHRIlK68YPSF94lJ-CbtI","tokenType":"Bearer","expiresIn":"900","additionalInfo":null}
 
+
+    public String generateAccessToken() {
+        System.out.println("=====> step2 : Create Access Token");
+
+        String timestamp = ZonedDateTime.of(LocalDateTime.now(), SmileConstant.ZONE_ID).format(SmileConstant.DF_0);
+        System.out.println("timestamp = " + timestamp);
+        String clientKey = SmileConstant.MERCHANT_ID;
+
+        String stringToSign = clientKey + "|" + timestamp;
+        System.out.println("stringToSign = " + stringToSign);
+        System.out.println("privateKeyStr = " + privateKeyStr);
+        String signature = SignatureUtil.createSignature(stringToSign, privateKeyStr);
+        System.out.println("signature = " + signature);
+
+        //url
+        String url = SmileConstant.BASE_URL + SmileConstant.ACCESS_TOKEN_API;
+
+        //body
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("grantType", "client_credentials");
+        String jsonBody = jsonObject.toString();
+
+        //post
+        String response = RemoteUtil.postJson(url, timestamp, clientKey, signature, jsonBody);
+        System.out.println("response = " + response);
+
+        //build res
+        Gson gson = new Gson();
+        AccessTokenRes res = gson.fromJson(response, AccessTokenRes.class);
+        System.out.println("res token = " + res.getAccessToken());
+
+        System.out.println("Please remember the token, use this token for all subsequent api calls.");
+
+        return res.getAccessToken();
+    }
 }
