@@ -46,7 +46,7 @@ public class Step3_Payin extends BaseTest {
 
         //generate parameter
         String merchantOrderNo = "T_" + System.currentTimeMillis();
-        String purpose = "Purpose For Transaction from Java SDK";
+        String purpose = "Purpose For Transaction from Java Demo";
         String paymentMethod = "QRIS";
 
         //moneyReq

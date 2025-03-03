@@ -40,7 +40,7 @@ public class Step_qris_sc extends BaseTest {
         //generate parameter
         MerchantReq merchantReq = new MerchantReq();
         merchantReq.setMerchantId(partnerId);
-        merchantReq.setMerchantName("Java SDK Test");
+        merchantReq.setMerchantName("Java Demo Test");
 
         QrisScReq qrisScReq = new QrisScReq();
         qrisScReq.setMerchant(merchantReq);

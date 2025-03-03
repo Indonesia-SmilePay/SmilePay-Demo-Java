@@ -44,7 +44,7 @@ public class Step6_Payout extends BaseTest {
 
         //generate parameter
         String merchantOrderNo = "D_" + System.currentTimeMillis();
-        String purpose = "Purpose For Disbursement from Java SDK";
+        String purpose = "Purpose For Disbursement from Java Demo";
         String paymentMethod = "BCA";
 
         //moneyReq

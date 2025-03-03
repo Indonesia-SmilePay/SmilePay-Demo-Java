@@ -1,3 +1,3 @@
-# SmilePay-SDK-Java
+# SmilePay-Demo-Java
 
-SmilePay-SDK-Java
+SmilePay-Demo-Java
